@@ -479,18 +479,55 @@
        3. HERO SECTION (Replicating Reference Layout & Typography Hierarchy)
        ========================================================================== */
       .hero-section {
-        min-height: 100vh;
-        padding-top: 8rem;
-        padding-bottom: 4rem;
         position: relative;
+        background-color: var(--bg-canvas);
+        overflow: visible;
+        padding: 0;
+      }
+
+      .hero-scroll-wrapper {
+        position: relative;
+        height: 450vh;
+      }
+
+      .hero-canvas {
+        position: sticky;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 1;
+        pointer-events: none;
+        display: block;
+      }
+
+      .hero-canvas-overlay {
+        position: sticky;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        margin-top: -100vh;
+        z-index: 1;
+        pointer-events: none;
+        background: radial-gradient(
+          circle at 50% 50%,
+          rgba(9, 10, 15, 0.35) 0%,
+          rgba(9, 10, 15, 0.78) 100%
+        );
+      }
+
+      .hero-sticky-container {
+        position: sticky;
+        top: 0;
+        min-height: 100vh;
+        margin-top: -100vh;
+        z-index: 2;
         display: flex;
         align-items: center;
-        background: radial-gradient(
-          circle at 75% 30%,
-          rgba(230, 182, 119, 0.08) 0%,
-          rgba(9, 10, 15, 0) 60%
-        );
-        overflow: hidden;
+        padding-top: 5rem;
+        padding-bottom: 3rem;
+        pointer-events: auto;
       }
 
       .hero-grid {
@@ -1357,74 +1394,81 @@
 
     <!-- MAIN CONTENT -->
     <main>
-      <!-- HERO SECTION (Matching Reference Image EOSAI Layout & Visuals) -->
+      <!-- HERO SECTION WITH CINEMATIC CANVAS SCROLL ANIMATION -->
       <section class="hero-section" id="hero">
-        <div class="container">
-          <div class="hero-grid">
-            <div class="hero-left-content">
-              <!-- Focal Oversized Brand Title matching reference "Imagining beyond reality." -->
-              <div class="hero-brand-focal reveal">
-                starsalign<span class="gold-dot">.</span>
-              </div>
+        <div class="hero-scroll-wrapper" id="heroScrollWrapper">
+          <!-- Fullscreen Sticky HTML5 Canvas -->
+          <canvas id="heroCanvas" class="hero-canvas"></canvas>
+          <div class="hero-canvas-overlay"></div>
 
-              <h1 class="hero-title reveal">
-                High-Impact Creator Partnerships &amp;
-                <span class="text-gradient">Massive Audience Reach.</span>
-              </h1>
+          <!-- Sticky UI Container (Preserving 100% of existing UI elements) -->
+          <div class="hero-sticky-container">
+            <div class="container">
+              <div class="hero-grid">
+                <div class="hero-left-content">
+                  <!-- Focal Oversized Brand Title -->
+                  <div class="hero-brand-focal reveal">
+                    starsalign<span class="gold-dot">.</span>
+                  </div>
 
-              <div class="hero-line-divider reveal"></div>
+                  <h1 class="hero-title reveal">
+                    High-Impact Creator Partnerships &amp;
+                    <span class="text-gradient">Massive Audience Reach.</span>
+                  </h1>
 
-              <p class="hero-sub reveal">
-                We connect brands with the right creators, craft data-driven
-                campaigns, and deliver measurable ROI.
-              </p>
+                  <div class="hero-line-divider reveal"></div>
 
-              <div class="hero-cta-group reveal">
-                <!-- Primary CTA with Arrow Circle (Matching reference view button) -->
-                <a href="#contact" class="btn btn-hero-primary">
-                  <span class="btn-arrow-circle">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-                      <path d="M5 12h14M12 5l7 7-7 7" />
-                    </svg>
-                  </span>
-                  <span>GET IN TOUCH</span>
-                </a>
+                  <p class="hero-sub reveal">
+                    We connect brands with the right creators, craft data-driven
+                    campaigns, and deliver measurable ROI.
+                  </p>
 
-                <!-- Secondary Creator CTA -->
-                <a
-                  href="https://tally.so/r/eqX7q0"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="btn btn-secondary"
-                >
-                  I'm a Creator
-                  <svg
-                    class="btn-icon"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2.2"
-                    style="transform: none; margin-left: 2px"
-                  >
-                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3" />
-                  </svg>
-                </a>
+                  <div class="hero-cta-group reveal">
+                    <!-- Primary CTA with Arrow Circle -->
+                    <a href="#contact" class="btn btn-hero-primary">
+                      <span class="btn-arrow-circle">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                          <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                      </span>
+                      <span>GET IN TOUCH</span>
+                    </a>
 
-                <div class="hero-floating-badge">
-                  <span class="badge-dot"></span> Authenticity &amp; Scale
-                </div>
-              </div>
+                    <!-- Secondary Creator CTA -->
+                    <a
+                      href="https://tally.so/r/eqX7q0"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="btn btn-secondary"
+                    >
+                      I'm a Creator
+                      <svg
+                        class="btn-icon"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2.2"
+                        style="transform: none; margin-left: 2px"
+                      >
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3" />
+                      </svg>
+                    </a>
 
-              <!-- Scroll Indicator (Matching Reference Image "SCROLL |") -->
-              <div class="hero-scroll-indicator reveal">
-                <span class="scroll-text">SCROLL</span>
-                <div class="scroll-line">
-                  <span class="scroll-dot"></span>
+                    <div class="hero-floating-badge">
+                      <span class="badge-dot"></span> Authenticity &amp; Scale
+                    </div>
+                  </div>
+
+                  <!-- Scroll Indicator -->
+                  <div class="hero-scroll-indicator reveal">
+                    <span class="scroll-text">SCROLL</span>
+                    <div class="scroll-line">
+                      <span class="scroll-dot"></span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-
-
           </div>
         </div>
       </section>
@@ -2066,6 +2110,152 @@
           );
         });
       }
+
+      /* ==========================================================================
+       CINEMATIC SCROLL-LINKED CANVAS ANIMATION ENGINE (160 FRAMES)
+       ========================================================================== */
+      (function () {
+        const TOTAL_FRAMES = 160;
+        const loadedFrames = {};
+        const canvas = document.getElementById("heroCanvas");
+        if (!canvas) return;
+
+        const ctx = canvas.getContext("2d");
+        const scrollWrapper = document.getElementById("heroScrollWrapper");
+
+        let currentFrame = 0;
+        let targetFrame = 0;
+
+        function getFramePath(index) {
+          const pad = String(index + 1).padStart(3, "0");
+          return `frames/ezgif-frame-${pad}.png`;
+        }
+
+        function resizeCanvas() {
+          if (!canvas) return;
+          const dpr = Math.min(window.devicePixelRatio || 1, 2);
+          canvas.width = window.innerWidth * dpr;
+          canvas.height = window.innerHeight * dpr;
+          render();
+        }
+
+        function drawCover(img) {
+          if (!ctx || !img || !img.complete || img.naturalWidth === 0) return;
+          const cw = canvas.width;
+          const ch = canvas.height;
+          const iw = img.naturalWidth;
+          const ih = img.naturalHeight;
+
+          const scale = Math.max(cw / iw, ch / ih);
+          const nw = iw * scale;
+          const nh = ih * scale;
+          const cx = (cw - nw) / 2;
+          const cy = (ch - nh) / 2;
+
+          ctx.clearRect(0, 0, cw, ch);
+          ctx.drawImage(img, cx, cy, nw, nh);
+        }
+
+        function render() {
+          const frameIdx = Math.min(
+            TOTAL_FRAMES - 1,
+            Math.max(0, Math.round(currentFrame))
+          );
+          let img = loadedFrames[frameIdx];
+
+          // Fallback to nearest loaded frame if current frame is loading
+          if (!img || !img.complete || img.naturalWidth === 0) {
+            for (let offset = 1; offset < TOTAL_FRAMES; offset++) {
+              if (
+                loadedFrames[frameIdx - offset] &&
+                loadedFrames[frameIdx - offset].complete
+              ) {
+                img = loadedFrames[frameIdx - offset];
+                break;
+              }
+              if (
+                loadedFrames[frameIdx + offset] &&
+                loadedFrames[frameIdx + offset].complete
+              ) {
+                img = loadedFrames[frameIdx + offset];
+                break;
+              }
+            }
+          }
+
+          if (img) {
+            drawCover(img);
+          }
+        }
+
+        function updateTargetFrame() {
+          if (!scrollWrapper) return;
+          const rect = scrollWrapper.getBoundingClientRect();
+          const scrollableDist = rect.height - window.innerHeight;
+          if (scrollableDist <= 0) {
+            targetFrame = 0;
+            return;
+          }
+          const progress = Math.min(1, Math.max(0, -rect.top / scrollableDist));
+          targetFrame = progress * (TOTAL_FRAMES - 1);
+        }
+
+        function animLoop() {
+          const diff = targetFrame - currentFrame;
+          if (Math.abs(diff) > 0.005) {
+            currentFrame += diff * 0.12; // Apple-smooth lerp physics
+            render();
+          } else if (currentFrame !== targetFrame) {
+            currentFrame = targetFrame;
+            render();
+          }
+          requestAnimationFrame(animLoop);
+        }
+
+        function preloadImages() {
+          // Preload first frame immediately for instant presentation
+          const firstImg = new Image();
+          firstImg.src = getFramePath(0);
+          firstImg.onload = () => {
+            loadedFrames[0] = firstImg;
+            render();
+          };
+
+          // Progressively load remaining 159 frames
+          for (let i = 0; i < TOTAL_FRAMES; i++) {
+            if (i === 0) continue;
+            const img = new Image();
+            img.src = getFramePath(i);
+            img.onload = () => {
+              loadedFrames[i] = img;
+              if (Math.round(currentFrame) === i) {
+                render();
+              }
+            };
+          }
+        }
+
+        const prefersReducedMotion = window.matchMedia(
+          "(prefers-reduced-motion: reduce)"
+        ).matches;
+
+        window.addEventListener("scroll", updateTargetFrame, { passive: true });
+        window.addEventListener("resize", resizeCanvas);
+
+        if (!prefersReducedMotion) {
+          preloadImages();
+          resizeCanvas();
+          updateTargetFrame();
+          requestAnimationFrame(animLoop);
+        } else {
+          const firstImg = new Image();
+          firstImg.src = getFramePath(0);
+          firstImg.onload = () => {
+            loadedFrames[0] = firstImg;
+            resizeCanvas();
+          };
+        }
+      })();
     </script>
   </body>
 </html>

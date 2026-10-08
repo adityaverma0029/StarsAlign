@@ -78,6 +78,13 @@ const STARSALIGN_CONFIG = {
     companyScriptUrl: "https://script.google.com/macros/s/AKfycby5bVHzu08oiu1H60TGW80VrWJFOgRnlsRdH17zfqTkfIv1stVUZA3ad-dSYQj3BETS/exec",
     creatorScriptUrl: "https://script.google.com/macros/s/AKfycbzniDMpJCdNB843Og9MYil3glX6ukzPVh_238cu12S4W5p4ogseFSjua6yoEKTEQj6h/exec",
     creatorFormUrl: "https://tally.so/r/eqX7q0"
+  },
+
+  socials: {
+    linkedin: "https://www.linkedin.com/company/starsalign",
+    instagram: "https://www.instagram.com/starsalign.in/",
+    twitter: "https://x.com/starsalign_in",
+    email: "hello@starsalign.in"
   }
 };
 

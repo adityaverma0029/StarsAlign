@@ -705,7 +705,7 @@ img {
 
 .hero-scroll-wrapper {
   position: relative;
-  height: 400vh;
+  height: 250vh;
 }
 
 .hero-scroll-wrapper::after {

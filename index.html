@@ -741,10 +741,10 @@
     }
 
     /* ==========================================================================
-     CINEMATIC SCROLL-LINKED CANVAS ANIMATION ENGINE (160 FRAMES)
+     CINEMATIC SCROLL-LINKED CANVAS ANIMATION ENGINE (32 FRAMES - ENDS AT EZGIF-FRAME 32)
      ========================================================================== */
     (function () {
-      const TOTAL_FRAMES = 160;
+      const TOTAL_FRAMES = 32; // Ends precisely at ezgif-frame-032.png
       const loadedFrames = {};
       const canvas = document.getElementById("heroCanvas");
       if (!canvas) return;
@@ -850,7 +850,7 @@
           render();
         };
 
-        // Progressively load remaining frames
+        // Progressively load remaining frames (up to frame 32)
         for (let i = 0; i < TOTAL_FRAMES; i++) {
           if (i === 0) continue;
           const img = new Image();
@@ -877,10 +877,11 @@
         updateTargetFrame();
         requestAnimationFrame(animLoop);
       } else {
-        const firstImg = new Image();
-        firstImg.src = getFramePath(0);
-        firstImg.onload = () => {
-          loadedFrames[0] = firstImg;
+        const finalImg = new Image();
+        finalImg.src = getFramePath(TOTAL_FRAMES - 1);
+        finalImg.onload = () => {
+          loadedFrames[TOTAL_FRAMES - 1] = finalImg;
+          currentFrame = TOTAL_FRAMES - 1;
           resizeCanvas();
         };
       }
